@@ -1,0 +1,1 @@
+powershell.exe -executionpolicy unrestricted -command "& { C:\Softdial\STG\_config-backup.ps1 }"

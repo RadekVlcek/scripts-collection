@@ -1,0 +1,1980 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="sytelco.com/TelephonyGatewayDirectConfig" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="configuration">
+    <xs:annotation>
+      <xs:documentation>Sample configuration, also for Lab4 system</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:string" name="fileVersion">
+          <xs:annotation>
+            <xs:documentation>If set to true, try and detect announcement messages before the call is connected.  &lt;detectAnnouncementsBeforeConnect>true&lt;/detectAnnouncementsBeforeConnect>  ************************************* SYSTEM SETUP ********************************************   The version that this config file is</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="threadPoolConfig">
+          <xs:annotation>
+            <xs:documentation>Set the max and min thread count in the .NET thread pool</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="minworker"/>
+              <xs:element type="xs:byte" name="minio"/>
+              <xs:element type="xs:short" name="maxworker"/>
+              <xs:element type="xs:short" name="maxio"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="telephonyLayerID">
+          <xs:annotation>
+            <xs:documentation>************************************* STG GENERAL SETUP ***************************************   Set the telephony layer ID (default __singlecti)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="companding">
+          <xs:annotation>
+            <xs:documentation>Companding Setting</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="defaultSipProxy">
+          <xs:annotation>
+            <xs:documentation>The default SIP proxy, either IPV4 address or fully-qualified domain name</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="doNotSendTD">
+          <xs:annotation>
+            <xs:documentation>Do not send the tenant descriptor</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:short" name="telnetBasePort">
+          <xs:annotation>
+            <xs:documentation>Which port will the telnet server listen on?  This +1 for xml mode connections</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="detectAnnouncementsBeforeConnect">
+          <xs:annotation>
+            <xs:documentation>If set to true, try and detect announcement messages before the call is connected.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="inhibitOZREmsg">
+          <xs:annotation>
+            <xs:documentation>Workaround to stop OZ message handling given an RE32 parameter</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="useExternalInbandSignaling">
+          <xs:annotation>
+            <xs:documentation>If true, then uses inband tones from the call rather than generating them internally</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="checkSendComplete">
+          <xs:annotation>
+            <xs:documentation>The heartbeat need to know which card has cpdtmf(u) running on DSP A/Port 0 and which timeslot
+        to get the heartbeat sound from cpdtmfDSP>Card/173104&lt;/cpdtmfDSP  Which DSP32 to use on the specified board (0-3)cpdtmfDSPNumber>0&lt;/cpdtmfDSPNumber  For TDM calls should we wait until we recieve the send complete flag before allowing a call to process ?</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="dropAgentOnDisconnection">
+          <xs:annotation>
+            <xs:documentation>If the connection to the dialer is lost, drop connections to any nailed up agents</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="answerTdmIcOnEntry">
+          <xs:annotation>
+            <xs:documentation>If we should answer the call when it hits STG, for TDM only</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:short" name="maxOutboundCalls">
+          <xs:annotation>
+            <xs:documentation>************************************* CALL THROTTLING  ****************************************   The maximum number of simultaneous outbound calls</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="maxCallsPerSecond">
+          <xs:annotation>
+            <xs:documentation>Calls per second throttle</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:short" name="maxIpCallsPerDsp">
+          <xs:annotation>
+            <xs:documentation>The number of ip calls allowed to exist into a dsp at one moment
+        IVR agents are not counted here, this is not a guarantee that DSP resources will be enough</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="reservedIncoming">
+          <xs:annotation>
+            <xs:documentation>Reserve resources for 1 or more incoming calls, if no incoming calls wanted do not define an 
+        inbound route  APPLIES ONLY TO IP PORTS(TRUNKS)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="maximumProxiedCalls">
+          <xs:annotation>
+            <xs:documentation>The maximum number of proxied calls allowed (-1 means off !) for IP calls only</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="maximumInboundCalls">
+          <xs:annotation>
+            <xs:documentation>maximum Inbound Calls</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="forceEchoCancelOnPrimaryOutbound">
+          <xs:annotation>
+            <xs:documentation>************************************* ECHO CANCELLATION  **************************************  This will force echo cancellation to be enabled on the primary connection when outbound call (regardless of other options)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="forceEchoCancelOnPrimaryInbound">
+          <xs:annotation>
+            <xs:documentation>This will force echo cancellation to be enabled on the primary connection when inbound call (regardless of other options)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="forceEchoCancelOnMainAgent">
+          <xs:annotation>
+            <xs:documentation>This will force echo cancellation to be enabled on the main agent connection (regardless of other options)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="forceEchoCancelOnSecondary">
+          <xs:annotation>
+            <xs:documentation>This will force echo cancellation to be enabled on the secondary agent connection (regardless of other options)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="telephonyLayerIP">
+          <xs:annotation>
+            <xs:documentation>************************************* STG CLUSTER MODE  **************************************  Set the telephony layer IP address</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="clusterMode">
+          <xs:annotation>
+            <xs:documentation>STG cluster mode, enable when using multiple STG's</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="customerRingbackTimeslot">
+          <xs:annotation>
+            <xs:documentation>*************************************** TIMESLOT ALLOCATION **********************************    Which timeslot on the DSP32.65 running cpdtmf[u] to use for logged on agents who are not 
+        connected to anyone</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="heartbeatTimeslot">
+          <xs:annotation>
+            <xs:documentation>Which timeslot on the DSP32.65 running cpdtmf[u] to use for logged on agents who are not 
+        connected to anyone</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="internalBusyTimeslot">
+          <xs:annotation>
+            <xs:documentation>Which timeslot on the DSP32.65 running cpdtmf[u] to use for indicating busy to agents</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="connectSignalTimeslot">
+          <xs:annotation>
+            <xs:documentation>Which timeslot on the DSP32.65 running cpdtmf[u] to use for signaling connected call to ACD
+        agent</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="customerHangupTimeslot">
+          <xs:annotation>
+            <xs:documentation>Which timeslot on the DSP32.65 running cpdtmf[u] to use for customer hang up tone</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="customerConnectedTimeslot">
+          <xs:annotation>
+            <xs:documentation>Which timeslot on the DSP32.65 running cpdtmf[u] to use for customer connected tone</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="aculabStartDelayS">
+          <xs:annotation>
+            <xs:documentation>************************************** ACULAB  SETUP ****************************************     Set the pause time between initialising aculab drivers and initialising rest of STG</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="aculabTimeOutMinutes">
+          <xs:annotation>
+            <xs:documentation>Used to manage aculab restart; for -1 we will not execute Aculab service restart</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="tingTrace">
+          <xs:annotation>
+            <xs:documentation>Enable ting tracing for aculab calls</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="numberChannelsPerLoopbackSource">
+          <xs:annotation>
+            <xs:documentation>Please note All sound files should be added in the format selected at installation (ulaw OR alaw) and   should have the be 8000 Hz Monotone ************************************* SOUND FILES ******************************************      The number of channels each looped back audio is played on (to distribute load)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="customerRingbackFile">
+          <xs:annotation>
+            <xs:documentation>Alternative to the above, a file to be played in a loop and used as the ringback sound</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="agentHoldFile">
+          <xs:annotation>
+            <xs:documentation>A file to be played in a loop and used as the source of hold tone for agents</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="customerHoldFile">
+          <xs:annotation>
+            <xs:documentation>A file to be played in a loop and used as the source of hold tone for agents</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="heartbeatFile">
+          <xs:annotation>
+            <xs:documentation>Alternative to the above, a file to be played in a loop and used as the agent heartbeat sound</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="messageOutOfService">
+          <xs:annotation>
+            <xs:documentation>This message will be played if dialer is not connected</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="busyFile">
+          <xs:annotation>
+            <xs:documentation>To be used for playing busy</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="callConnectedFile">
+          <xs:annotation>
+            <xs:documentation>To be used to play beep when a call is connected</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="callHangupFile">
+          <xs:annotation>
+            <xs:documentation>To be used to play beep when a call is terminated from customer end</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="agentMessageNoDataFile">
+          <xs:annotation>
+            <xs:documentation>To be used to play beep when the dialer is starved of numbers</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="agentMessageCustomerClearedFile">
+          <xs:annotation>
+            <xs:documentation>To be used to play beep when the dialer is starved of numbers</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="agentMessageTimeout">
+          <xs:annotation>
+            <xs:documentation>Agent Message Timeout</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="DTMFDigitLength">
+          <xs:annotation>
+            <xs:documentation>*********************************** DTMF *****************************************************     Time in seconds for which each DTMF digit tone is played (zero for Aculab default)DTMF settings</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="DTMFDigitSpacing">
+          <xs:annotation>
+            <xs:documentation>Time in seconds to pause between each played DTMF digit (zero for Aculab default)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="heartbeatOnTime">
+          <xs:annotation>
+            <xs:documentation>*********************************** TIMERS ***************************************************     Period of time in seconds that agents waiting will hear the heartbeat tone</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="heartbeatOffTime">
+          <xs:annotation>
+            <xs:documentation>Period of time in seconds that agents will hear silence between heartbeats</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="internalBusyTime">
+          <xs:annotation>
+            <xs:documentation>How long in seconds should an agent hear generated busy tones</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="callForwardTimeout">
+          <xs:annotation>
+            <xs:documentation>Call forward timeout value, value to wait for response of forwarded call before timing it 
+        outTimeout when proxying calls</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="channelSettlingTime">
+          <xs:annotation>
+            <xs:documentation>Time (in seconds) after a channel is release when it becomes available for re-use</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="failedCallsPostIdleDelayTime">
+          <xs:annotation>
+            <xs:documentation>Time in seconds that a call may continue after an IDLE event (Q.931 clearing cause) in cases 
+        where call progress can be heard&lt;</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="connectSignalTime">
+          <xs:annotation>
+            <xs:documentation>How long in seconds should an agent hear a tone signaling call connect</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="maxToneDetectionTime">
+          <xs:annotation>
+            <xs:documentation>Maximum time in seconds to listen to calls before declaring them unidentified</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="lateBusyThreshold">
+          <xs:annotation>
+            <xs:documentation>The threshold value in seconds, beyond which a busy needs to be classified as an intercept</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="busyConsecutiveDetects">
+          <xs:annotation>
+            <xs:documentation>For UK tones, the number of times busy cadence must be detected before classifying the call as 
+        a busy.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="logonRingTime">
+          <xs:annotation>
+            <xs:documentation>Ring time in seconds before declaring an agent logon (nailup) to be a no answer</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="estimatedNetworkDelayTime">
+          <xs:annotation>
+            <xs:documentation>Estimate (in seconds) of the time between dialing a number and the network starting to really 
+        ring at the far end</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="timeBeforeAnswer">
+          <xs:annotation>
+            <xs:documentation>Time before answering an incoming call if not already answered by system</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="hangupSignalTimeS">
+          <xs:annotation>
+            <xs:documentation>How long to play the hangup signal to the agent (seconds)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="connectCustomerTimeS">
+          <xs:annotation>
+            <xs:documentation>How long to play the hangup signal to the agent (seconds)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="callRetransferS">
+          <xs:annotation>
+            <xs:documentation>Time in seconds to wait before retrying a previously failed call transfer to an agent</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="rtpRxCheckTimeS">
+          <xs:annotation>
+            <xs:documentation>Time in seconds to allow for RTP data to be recieved after the launch of an outbound IP call</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="rtpTxCheckTimeS">
+          <xs:annotation>
+            <xs:documentation>Time in seconds to allow for RTP data to be sent after the launch of an outbound IP call</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="dropCallIfNoAudioInSeconds">
+          <xs:annotation>
+            <xs:documentation>Within how many seconds after a call is connected must RTP (audio) start being received? If no RTP (audio) is received within this time the call will be terminated.
+       A value of zero will disable the feature.
+       This can be used to terminate calls which are sufferening from a one-way audio issue.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="lostAudioDetectionLatencyInSeconds">
+          <xs:annotation>
+            <xs:documentation>How many seconds of no RTP (audio) data being received (after at least some RTP data has been received) will trigger the no audio data event.
+       The call will be terminated if this happens. A value of zero will disable the feature.
+       This can be used to terminate calls where the remote endpoint has suffered some kind of failure where it wasn't able to properly terminate the call.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="stopAudibleRingDetectionAtRingbackEvent">
+          <xs:annotation>
+            <xs:documentation>If enabled, a ringback event (OOB signalling) will stop the progress detector from timing out if no audible ring is detected.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="enableAnswerMachineDetection">
+          <xs:annotation>
+            <xs:documentation>*********************************  MACHINE DETECTION (ANSWER / FAX)***************************    True if answering machine detection is supported by the telephony board</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="enableFaxMachineDetection">
+          <xs:annotation>
+            <xs:documentation>True if Fax machine detection is supported by the telephony board&lt;</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="forceFaxDetectionTime">
+          <xs:annotation>
+            <xs:documentation>If AmD is not being used, how long to listen into the call for to see if it is a fax machine.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="forceFaxDetectionAlertFile">
+          <xs:annotation>
+            <xs:documentation>The wave file that an agent should hear if they were connected to a call that was later terminated because it was determined to be a fax machine.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="maxMachineDetectionTime">
+          <xs:annotation>
+            <xs:documentation>The maximum amount of time that the AMD algorithm will run for to determine a call outcome</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="maxSecondsSilenceAfterConnect">
+          <xs:annotation>
+            <xs:documentation>The time after connect (when doing AMD) after which if no signal has yet been detected that call will be classified as CategoryUnknown</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="minSecondsSignalLengthAfterConnect">
+          <xs:annotation>
+            <xs:documentation>The time (in seconds) that a signal is required to be active (in total) during the maxSecondsSilenceAfterConnect time to count as a detected signal.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="timedOutMachineDetectionOutcome">
+          <xs:annotation>
+            <xs:documentation>The default call outcome used when the AMD algorithm times out without giving a definitive result</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="droppedDuringMachineDetectionCA">
+          <xs:annotation>
+            <xs:documentation>The softdial CA value to return in the CF message when a call is dropped remotely whilst machine
+        detection is in progress</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="postMachineSilenceLatency">
+          <xs:annotation>
+            <xs:documentation>The time in seconds that silence needs to last for after a machine is detected to trigger that
+        start of message playback</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="postMachineMaxSilenceWait">
+          <xs:annotation>
+            <xs:documentation>Maximum time in seconds after a machine is detected before the message will be played regardless
+        of silence (end of message) being detected</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="AMLeftMessageCause">
+          <xs:annotation>
+            <xs:documentation>Value to pass back as cause for Answer machine where message left</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="waitForSilenceWithDO4">
+          <xs:annotation>
+            <xs:documentation>When using DO4 to connect answering machines to agents (and indicate that detection to the agent), enabling this will also make the notification wait until after postMachineSilenceLatency seconds of silence which should indicate the end of the greeting message.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="catsigParams">
+          <xs:annotation>
+            <xs:documentation>AMD detection adjustment values fed to aculab recognition setup, these are the defaults</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="catsigParam" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="name" use="optional"/>
+                      <xs:attribute type="xs:float" name="value" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="AmdAlgorithm">
+          <xs:annotation>
+            <xs:documentation>The AMD algorithm that we should use</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="adjustCatSig">
+          <xs:annotation>
+            <xs:documentation>Should we fiddle with the cat sig parameters ?</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="useDoInPreview">
+          <xs:annotation>
+            <xs:documentation>Use Detection Options in preview call ?</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:short" name="VMFrequency1">
+          <xs:annotation>
+            <xs:documentation>Frequencies for non-standard carrier voicemail tones (range is value - 20, value + 20) Forms part of SIT tone detection logic</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:short" name="VMFrequency2"/>
+        <xs:element type="xs:short" name="VMFrequency3"/>
+        <xs:element type="xs:string" name="forceAnswerOnPlayback">
+          <xs:annotation>
+            <xs:documentation>Control of sending connect signal in response to incoming call</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="forceAnswerOnTX"/>
+        <xs:element type="xs:string" name="forceAnswerOnPlayLoop"/>
+        <xs:element type="xs:string" name="forceAnswerOnCallRecord"/>
+        <xs:element type="xs:string" name="captureAgentDTMF">
+          <xs:annotation>
+            <xs:documentation>Capture agent entered DTMF (for transfers and handset coding of calls)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="agentMFScript">
+          <xs:annotation>
+            <xs:documentation>The names of python scripts used for external processing tasks</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="recordAgentConference">
+          <xs:annotation>
+            <xs:documentation>******************************** CALL RECORDING ********************************************      record the agent conference if the call session has its default recording. This may be a regulatory requirement for some.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="useRecordingCompression">
+          <xs:annotation>
+            <xs:documentation>Controls if recording should be made using the ACUBLK (oki on prosody X) compression format</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="addInfoInWaveFiles">
+          <xs:annotation>
+            <xs:documentation>Determines the nature of the call recording mechanism. Recording Monitor needs this to be true,
+        adds xml data to end of the .wav file data</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="includeVirtualAgentsInRecordingData">
+          <xs:annotation>
+            <xs:documentation>Set true to include details of virtual agents as well as regular agents in the list of agents stored in a recording file.  If there were no regular agents then the list will always include the virtual agents.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="recordingFileNameFormat">
+          <xs:annotation>
+            <xs:documentation>Sets the way filenames are generated, "session" for the original style with the session id and
+        timestamp, "guid" for the newer style using a CallGem generated GUID.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="callRecordingPath">
+          <xs:annotation>
+            <xs:documentation>The path into which recorded calls should be put (directly or a sub folder depending on how the
+        recording is started)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="callArchivingPath">
+          <xs:annotation>
+            <xs:documentation>The path into which recording folders should be moved after a specified number of days</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="daysBeforeArchiving">
+          <xs:annotation>
+            <xs:documentation>How many days old a folder of recordings needs to be before it is moved to the archive 
+        (1 day = yesterdays date)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="daysToKeepArchive">
+          <xs:annotation>
+            <xs:documentation>How many days old a folder of recording needs to be before it is deleted from the archive 
+        (1 day = yesterdays date)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="daysBetweenArchives">
+          <xs:annotation>
+            <xs:documentation>How many days between each run of the archiving process, this will be aligned to 1st January 2000
+        so that restarts of the service will not affect the scheduling</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="useMultiSessionRec">
+          <xs:annotation>
+            <xs:documentation>If multi-session recording is enabled (must be dialler version 10.6 or later)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="recordingTimeoutMins">
+          <xs:annotation>
+            <xs:documentation>Time in minutes to wait before timing out a recording</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="recordingCheckMins">
+          <xs:annotation>
+            <xs:documentation>How often (in minutes) to check the internal recording table for timed out recordings</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="aoOnRecTimeout">
+          <xs:annotation>
+            <xs:documentation>The agent outcome to send in the TC when a recording is timed out by STG</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="recordAndDropCA">
+          <xs:annotation>
+            <xs:documentation>When this CA is returned from the network we record the connection for a time before dropping, note -1 (default means off)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="recordAndDropS">
+          <xs:annotation>
+            <xs:documentation>This represents the time period (in seconds) that the recording will be launched on the connection for before dropping</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="recordAndDropModifiedCA">
+          <xs:annotation>
+            <xs:documentation>This is the CA that we return to the dialler when a record and drop has taken place</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="ttsUseRemoteService">
+          <xs:annotation>
+            <xs:documentation>****************************** TEXT TO SPEECH SETUP ******************************************    Set true to use a remote service for TTS conversion, this takes priority over any other TTS settings</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="enableTTSInteligentCaching">
+          <xs:annotation>
+            <xs:documentation>If we should attempt to split up TTS text to maximise reuse and more efficient caching   NOTE TTS text will be split by capitalised text values</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="cacheTtsCapitalisedSegments">
+          <xs:annotation>
+            <xs:documentation>If this is enabled text fragments that are capitalised will also be cached   Default system behaviour is to assume these are not cached (because they are non recurring)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:short" name="ttsBytesPerSecond">
+          <xs:annotation>
+            <xs:documentation>The number of bytes of audio data supplied to the tts engine in a second</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="ttsBitsPerSample">
+          <xs:annotation>
+            <xs:documentation>The number of bits of audio data in a sample</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="ttsChannelCount">
+          <xs:annotation>
+            <xs:documentation>Mono or stereo TTS (1 / 2)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:short" name="ttsSamplesPerSecond">
+          <xs:annotation>
+            <xs:documentation>The number of average tts buffer bytes to be sampled in a second</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="ttsSpeechAudioFormat">
+          <xs:annotation>
+            <xs:documentation>The audio format to use in the memory stream when speaking the TTS voice    Please:   for aLaw, use 41   for uLaw, use 49</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="attTTSSettings">
+          <xs:annotation>
+            <xs:documentation>AT &amp; T Natural Voice  If this is true, an attempt will be made to start the At&amp;t TTS system</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="enableAttTTS"/>
+              <xs:element type="xs:byte" name="numberEngines"/>
+              <xs:element type="xs:string" name="AttTTSHost"/>
+              <xs:element type="xs:short" name="AttTTSPort"/>
+              <xs:element type="xs:string" name="AttTTSVoice"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sapiTTSSettings">
+          <xs:annotation>
+            <xs:documentation>Microsoft Speech API (SAPI)  Set "enable" true to enable SAPI TTS, if ATT is enabled will always take precedence</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:byte" name="numberEngines"/>
+              <xs:element type="xs:string" name="enabled"/>
+              <xs:element type="xs:string" name="voice"/>
+              <xs:element type="xs:byte" name="ttSspeechRate"/>
+              <xs:element type="xs:byte" name="ttSspeechVolume"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="useInternalCliInExtTransfer">
+          <xs:annotation>
+            <xs:documentation>********************************* TRANSLATIONS *********************************************      If we should use the internally configured CLI when transferring a call to an external number, if false we use the oringator's CLI</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="translateBeforeIC">
+          <xs:annotation>
+            <xs:documentation>If we should translate incoming call source and destination before sending IC to the dialer</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="cliTransBeforeAddress">
+          <xs:annotation>
+            <xs:documentation>Do the CLI translation before the address translation - defaults to false</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="cliTranslations">
+          <xs:annotation>
+            <xs:documentation>CLI Translations DDI number to new CLI numbertranslate address="sip:1111@10.21.21.11" translated="1111" useSourceAsComparer="false"/</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="addressTranslations">
+          <xs:annotation>
+            <xs:documentation>Translations from one address to another, handled internally</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="translate" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="address" use="optional"/>
+                      <xs:attribute type="xs:string" name="translated" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="settingsProsodyS">
+          <xs:annotation>
+            <xs:documentation>****************** PROSODY S SETTINGS *******************************************************     Please note the settings available in this section will only take effect when the system is running under a ProsodyS configurarion   useProsodyS                           - If we are running a ProsodyS system   receiveDTMF                           - Indicator of whether RFC2833 tones that are present in the data stream should be regenerated as audio data. (either "rfc2833" events or  "Audio")  sendDTMF                              - Indicator of whether tones that could be sent using the RFC 2833 standard that are detected in the audio should be encoded as RFC 2833 RTP packets. (either "rfc2833" events or  "Audio")  enforceMinimumDtmfRxSpacing           - A non-zero value instructs the VMP[rx] to enforce a minimum silence between regenerated tones.   overrideRFC2833receivePayloadType     - The payload type ID that DTMF data will be presented on</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="useProsodyS"/>
+              <xs:element type="xs:string" name="receiveDTMF"/>
+              <xs:element type="xs:string" name="sendDTMF"/>
+              <xs:element type="xs:byte" name="enforceMinimumDtmfRxSpacing"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="ignoreCards">
+          <xs:annotation>
+            <xs:documentation>****************** PROSODY X SETTINGS, CARDS ************************************************    Cards to ignore &lt;serialNumber>179560&lt;/serialNumber>serialNumber>183794&lt;/serialNumber Prosody X</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="requiredCards">
+          <xs:annotation>
+            <xs:documentation>Cards that must be found before initialisation can proceed serialNumber>179560&lt;/serialNumberserialNumber>183948&lt;/serialNumberserialNumber>HS_PROSODYS&lt;/serialNumber</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="sipCredentials">
+          <xs:annotation>
+            <xs:documentation><![CDATA[***************************** SIP CREDENTIALS, GATEWAY SETUP ********************************     Gateway Settings for SIP registration  Do not define unless a ip board is active,  we assume that proxy is also registar (ONDO)sipProxy>
+    <enabled>false</enabled>
+    <address>10.0.0.1</address>
+    <port>5060</port>
+    <protocol>Udp</protocol>
+    <realm>realm</realm>
+    <username>user</username>
+    <password>password</password>
+    <registrarName>name</registrarName>
+    <registrarTarget>name@10.0.0.0</registrarTarget>
+    <reRegisterAfterMins>300</reRegisterAfterMins>
+  </sipProxy  It is possible to call directly to multiple proxy server, so this section can define
+        authentication credentials for multiple realms.]]></xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="credential">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="username"/>
+                    <xs:element type="xs:string" name="password"/>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="realm"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="sipListeners">
+          <xs:annotation>
+            <xs:documentation><![CDATA[sipListener>
+      <ipAddress>10.0.0.1</ipAddress>
+      <port>5060</port>
+      <protocol>Udp</protocol>
+    </sipListener]]></xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="ukSITMaxPeriod">
+          <xs:annotation>
+            <xs:documentation>******************************* CALL PROGRESS TONE DETECTION *********************************    Time in seconds during which all three tones of a UK SIT must be detected in the correct 
+        sequence</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="usSITFirstRingTimer">
+          <xs:annotation>
+            <xs:documentation>US First Ring Timer. A callback is scheduled to check that we have recieved ringback in the configured time</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="usSITConsecutiveRingTimeout">
+          <xs:annotation>
+            <xs:documentation>US ConsecutiveRing Timeout. Total time allowed between rings before we classify as a SIT_IC</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:float" name="usSITSpoofRingTimer">
+          <xs:annotation>
+            <xs:documentation>US Spoof Ring Timer. A callback is scheduled to check for consecutive ringback following the first event from  (usSITFirstRingTimer)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="ukSITDetectDeadTone">
+          <xs:annotation>
+            <xs:documentation>UK if we should detect dead tone using the time between ringback events</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="enableSITDetectionPostConnect">
+          <xs:annotation>
+            <xs:documentation>True if we want to keep listening for SIT tones after a connect</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="toneType">
+          <xs:annotation>
+            <xs:documentation>What type of tones should be detected?</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="enableToneDetection">
+          <xs:annotation>
+            <xs:documentation>Call progress tone overall control settings</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="defaultCadenceRule">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:float" name="ringStoppedTimeout"/>
+              <xs:element type="xs:float" name="firstRingTimeout"/>
+              <xs:element type="xs:string" name="toneType"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="name"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ipCallProfiles">
+          <xs:annotation>
+            <xs:documentation>****************************** CALL PROFILES ************************************************      rtpTOS and is a byte field that specifies the type of service field to be used in the IP headers of the RTP packets sent by aculab on a per call basis for outgoing and incoming calls. 
+  To set this value to  zero 256 should be used (hex 0x100). These values should be set depending on the prioritisation settings of the router to prioritise RTP traffic over other traffic rtcpTOS and is a byte field that specifies the type of service field to be used in the IP headers of the RTCP packets sent by aculab on a per call basis for outgoing and incoming calls. 
+  To set this value to  zero 256 should be used (hex 0x100). These values should be set depending on the prioritisation settings of the router to prioritise RTCP traffic over other traffic   Specify codec type: G.711 - "G711_ALAW" or "G711_ULAW"; G.729 - "G729".
+        fpp = frames per packet- min value=1 max value=3 default=2,
+        vad = voice activity detector - false/0 = Off, true/1 = On. Suppresses silence, stops empty packets being sent.   The IP Telephony card can detect DTMF in the audio stream switched to it and treat it differently to normal audio by blocking DTMF in the outgoing audio stream and
+        sending RFC 2833 frames instead.    If  dtmf_detector is set to true then this processing will be performed.   If dtmf_detector is set to false then DTMF will not be detected, and will be treated as normal audio</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="profile" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:short" name="rtpTos"/>
+                    <xs:element type="xs:short" name="rtcpTos"/>
+                    <xs:element type="xs:string" name="dtmfDetector"/>
+                    <xs:element name="codecs">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="codec" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:string" name="type" use="optional"/>
+                                  <xs:attribute type="xs:string" name="vad" use="optional"/>
+                                  <xs:attribute type="xs:byte" name="fpp" use="optional"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="name" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="rerouteWhenCongested">
+          <xs:annotation>
+            <xs:documentation>******************* CALL ROUTING ************************************************************    Whether or not to try and re-route the call when a congestion outcome is recieved from the netork</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="enableLoopback">
+          <xs:annotation>
+            <xs:documentation>Allow outbound calls to be looped back into the system as an inbound call</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="portInfos">
+          <xs:annotation>
+            <xs:documentation>******************* PORTS *******************************************************************     Low level information about each port   maxConcurrentInbound = 0 means there is no limit</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="portInfo">
+                <xs:annotation>
+                  <xs:documentation><![CDATA[<presentation>
+        <orig_numbering_type>1</orig_numbering_type>
+        <orig_numbering_plan>2</orig_numbering_plan>
+        <orig_numbering_presentation>3</orig_numbering_presentation>
+        <orig_numbering_screening>4</orig_numbering_screening>
+        <originating_addr>test</originating_addr>
+      </presentation>]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="resource"/>
+                    <xs:element type="xs:string" name="allowCallProgressEmulation"/>
+                    <xs:element type="xs:byte" name="maxConcurrentInbound"/>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="name"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="portGroups">
+          <xs:annotation>
+            <xs:documentation>Defines each group of ports that are connected to the same destination</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="portGroup">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ports">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="resource"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="inboundRoute"/>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="name"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="inboundRoutes">
+          <xs:annotation>
+            <xs:documentation>******************* INBOUND ROUTES *******************************************************************     Inbound call routing definitions, each port references one of these to determine how calls 
+        arriving at that port should be handled</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="inboundRoute">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="handler">
+                      <xs:annotation>
+                        <xs:documentation>Either a call arriving here uses the "Internal" handler which forwards it on, or the "Dialer" 
+            handler which just notifies the dialer that there is a call for it to handle</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:string" name="ipCallProfile">
+                      <xs:annotation>
+                        <xs:documentation>call profile this route uses</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:byte" name="stripSipAddress">
+                      <xs:annotation>
+                        <xs:documentation>strip sip address parts from SRC (1), DST (2) or both (3) numbers (sip:1111@10.0.0.1 would become 1111)</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute type="xs:string" name="name"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="routes">
+          <xs:annotation>
+            <xs:documentation><![CDATA[******************* INGRESS ROUTES *******************************************************************       When acting as a proxy we can redirect ranges of numbers to be handled by "Internal" or by the
+        "Dialer"  inbound calls ingressRoutes>
+    <route name="IngressRoute1">
+      <inboundRoute>FromSIP</inboundRoute>
+      <acceptList>
+        <item>sip:0</item>
+      </acceptList>
+      <handler>Internal</handler>
+    </route>
+</ingressRoutes ******************* OUTBOUND ROUTES *******************************************************************     Route control for ALL dialed numbers, extensions or external calls, for IP create separate 
+        routes]]></xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="route" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>PSTN ROUTE EMERGENCY ROUTE EXTENSIONS ROUTE INBOUND CALLS FROM ISDN CONNECTED TO MG1 ROUTED TO AGENT EXTENSIONS  Default Bridged Calls route. This exists to allow bridged SIP calls to address STG peers directly</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:choice maxOccurs="unbounded" minOccurs="0">
+                    <xs:element name="targetPortGroups">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="portGroup"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="acceptList">
+                      <xs:annotation>
+                        <xs:documentation>item>860086&lt;/item>
+		&lt;item>8600852&lt;/item>
+		&lt;item>8600853&lt;/item</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="rejectList">
+                      <xs:annotation>
+                        <xs:documentation><![CDATA[stripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+	    <item>+</item>
+        <item>8600</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>66</item>
+      </stripPrefixesstripPrefixes>
+        <item>66</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixesstripPrefixes>
+        <item>1</item>
+      </stripPrefixes]]></xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType mixed="true">
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="item" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="stripPrefixes">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="item"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:string" name="prefix">
+                      <xs:annotation>
+                        <xs:documentation><![CDATA[tenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>1</item>
+	  </stripPrefixesrejectList>
+		<item>1</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+        </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>1</item>
+	  </stripPrefixesrejectList>
+		<item>1</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListrejectList>
+		<item>1</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>51</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>51</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>51</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>+31612331289</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>+31612331289</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>1</item>
+	  </stripPrefixesrejectList>
+		<item>1</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListstripPrefixes>
+        <item></item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item></item>
+      </stripPrefixesrejectList>
+        <item></item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>+491717490749</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+	  </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>1</item>
+	  </stripPrefixesrejectList>
+		<item>+31612331289</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>+31612331289</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>+31612331289</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>66</item>
+	  </stripPrefixesrejectList>
+		<item>0</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>66</item>
+	  </stripPrefixesrejectList>
+		<item>0</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>66</item>
+	  </stripPrefixesrejectList>
+		<item>0</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item></item>
+      </stripPrefixesrejectList>
+	    <item></item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>+491717490749</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+	    <item>1</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item>1</item>
+	  </stripPrefixesrejectList>
+		<item>+31612331289</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item>66</item>
+      </stripPrefixesrejectList>
+        <item></item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item></item>
+      </stripPrefixesrejectList>
+        <item></item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item></item>
+      </stripPrefixesrejectList>
+        <item></item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item></item>
+	  </stripPrefixesrejectList>
+		<item></item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListstripPrefixes>
+        <item></item>
+      </stripPrefixesrejectList>
+        <item></item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+        <item></item>
+      </stripPrefixesrejectList>
+        <item></item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListstripPrefixes>
+		<item></item>
+	  </stripPrefixesrejectList>
+		<item></item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListstripPrefixes>
+		<item></item>
+	  </stripPrefixesrejectList>
+		<item></item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListstripPrefixes>
+		<item></item>
+	  </stripPrefixesrejectList>
+		<item></item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>+441603413972</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListrejectList>
+		<item>0</item>
+	  </rejectListtenantList>
+		<item>default</item>
+	  </tenantList]]></xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:string" name="postfix"/>
+                    <xs:element type="xs:byte" name="maxDigits">
+                      <xs:annotation>
+                        <xs:documentation><![CDATA[stripPrefixes>
+        <item>1</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListprefix>sip:</prefix>
+      <postfix>@myproxy.address</postfix]]></xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:byte" name="minDigits"/>
+                    <xs:element type="xs:string" name="allowCallProgressEmulation">
+                      <xs:annotation>
+                        <xs:documentation><![CDATA[rejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListprefix>sip:</prefixpostfix>@10.7.0.6</postfixmaxDigits>4</maxDigitsminDigits>4</minDigitsstripPrefixes>
+        <item>0</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListprefix>sip:</prefixpostfix>@10.7.0.6</postfixmaxDigits>4</maxDigitsminDigits>4</minDigitsstripPrefixes>
+        <item>0</item>
+      </stripPrefixesrejectList>
+        <item>0</item>
+      </rejectListtenantList>
+        <item>default</item>
+      </tenantListprefix>sip:</prefixpostfix>@10.7.0.6</postfixmaxDigits>4</maxDigitsminDigits>4</minDigits]]></xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:string" name="ipCallProfile"/>
+                    <xs:element name="presentation">
+                      <xs:annotation>
+                        <xs:documentation><![CDATA[<sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact><sip_contact>contact@machine.com</sip_contact>]]></xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType mixed="true">
+                        <xs:sequence>
+                          <xs:element type="xs:byte" name="orig_numbering_presentation" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation><![CDATA[<orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan <orig_numbering_type></orig_numbering_type orig_numbering_plan></orig_numbering_plan]]></xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                          <xs:element type="xs:string" name="originating_addr" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation><![CDATA[orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening orig_numbering_screening></orig_numbering_screening <orig_numbering_type></orig_numbering_type>
+        <orig_numbering_plan></orig_numbering_plan>
+        <orig_numbering_presentation></orig_numbering_presentation>
+        <orig_numbering_screening></orig_numbering_screening><orig_numbering_type></orig_numbering_type>
+        <orig_numbering_plan></orig_numbering_plan>
+        <orig_numbering_presentation></orig_numbering_presentation>
+        <orig_numbering_screening></orig_numbering_screening><orig_numbering_type></orig_numbering_type>
+        <orig_numbering_plan></orig_numbering_plan>
+        <orig_numbering_presentation></orig_numbering_presentation>
+        <orig_numbering_screening></orig_numbering_screening><orig_numbering_type></orig_numbering_type>
+        <orig_numbering_plan></orig_numbering_plan>
+        <orig_numbering_presentation></orig_numbering_presentation>
+        <orig_numbering_screening></orig_numbering_screening>]]></xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element type="xs:byte" name="priority">
+                      <xs:annotation>
+                        <xs:documentation>Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority that this route has over other routes  Priority 0 indicates that this is the ONLY route acceptable for bridged calls</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:byte" name="congestionThreshold">
+                      <xs:annotation>
+                        <xs:documentation>How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system How many failed calls need to be dialled on this route before it is considered congested by the system</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:string" name="cadenceRule">
+                      <xs:annotation>
+                        <xs:documentation>cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route cadence rule for this route</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="tenantList">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="item"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:choice>
+                  <xs:attribute type="xs:string" name="name" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="congestionMappings">
+          <xs:annotation>
+            <xs:documentation>Outcomes that are considered congested and used to re-route traffic via alternate routes</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="congestion" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="causeCode"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="busyMappings">
+          <xs:annotation>
+            <xs:documentation>Oucomes that are used to classify a call as busy</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="busy" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="congestion"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="progressIndicatorAsRinging">
+          <xs:annotation>
+            <xs:documentation>******************************* PROGRESS INDICATORS *****************************************     SIP, treat "183" call progress messages as "180" ringing messages</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="noAnswerTimeoutCustomCause">
+          <xs:annotation>
+            <xs:documentation>ProgressIndicatorAsConnect to be used on TDM connections:  if a progress indicator listed here is 
+        received if will handled as connect this is valid only and only when we are dealing with calls 
+        with DO0 over Tdm value zero is ignored there is no limit on how many values are added &lt;progressIndicatorAsConnect>
+    &lt;progressIndicator>1&lt;/progressIndicator>
+  &lt;/progressIndicatorAsConnect> ******************************** OUTCOME MAPPINGS *******************************************    If we want to set a custom cause code for a no answer timeout</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="noAnswerCustomCause">
+          <xs:annotation>
+            <xs:documentation>The custom cause code for the ring no answer timeout</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:string" name="proxiedCallFailedCause">
+          <xs:annotation>
+            <xs:documentation>The cause code to use when failing a call because we have reached the maximum calls allowed (IP calls only)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="internalCallTimeoutCode">
+          <xs:annotation>
+            <xs:documentation>Internal call timeout cause code</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="rnaCallTimeoutCode">
+          <xs:annotation>
+            <xs:documentation>RNA timeout cause code</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="defaultOutcomeCA">
+          <xs:annotation>
+            <xs:documentation>The default CA code to pass to the dialer for calls that fail with unknown reason</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element type="xs:byte" name="noAnswerNoRingbackCA">
+          <xs:annotation>
+            <xs:documentation>The CA code to pass to the dialer for calls timed out as no answer, for which no ringback had been
+        detected (ISDN or inband)</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="callProgressEmulation">
+          <xs:annotation>
+            <xs:documentation>Map with files to be played to main agent on various rawcauses in order to provide to agent an 
+        expected "audio experience". On each raw cause the coresponding file will be played for 
+        "duration" seconds. We can have the same file for multiple causes.
+        The emulation takes place only if the outbound call needs to emulate call progress. To activate 
+        call progress for a call, you need to set &lt;emulateCallProgress>true&lt;/emulateCallProgress> in 
+        portInfo, portGroup or route  that was used for call origination. If route/emulateCallProgress is
+        set to true, it will propagate to portgroups/portinfo used by it. If PortGroup/emulateCallProgress
+        is set to true, it will propagate to Portinfo used.       
+       
+         - Duration represent seconds and has default value of 1.5
+         
+         - MAP
+          - rawcause represent either Q931 cause as a number or a SIP cause as a number
+          - file represents full path to the file, no default values there are no default associations
+        
+        Not configurable on the fly.
+        
+        undefined raw causes will not be handled, no emulation will take place
+  
+        Use in absence of a call progress analysis, applies only and only to agent 
+        connection, and only on outbound "Follow-upCalls", during dialing we always play ring back
+        to the agent, ring back is coming from DSP65 or customerRingbackFile</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="maps">
+                <xs:annotation>
+                  <xs:documentation>127 interworking</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="map" maxOccurs="unbounded" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>busytone.wav, equipmentengagedtone.wav, numberunobtainable.wav400 Bad Request                           401 Unauthorised                          402 Payment Req’d                         403 Forbidden                             404 Not found                             405 Method not allowed                    406 Not Acceptable                        407 Proxy Auth required                   408 Timeout                               410 Gone                                  413 Request entity too long               414 URI too long                          415 Unsupported media type                416 Unsupported URI Scheme                420 Bad extension                         421 Extn Required                         423 Interval Too Brief                    480 Temporarily Unavailable               481 Call not exist                        482 Loop Detected                         483 Too Many Hops                         484 Address Incomplete                    485 Ambiguous                             486 Busy Here                             487 Request Terminated                    488 Not Acceptable here                   500 Server internal error                 501 Not implemented                       502 Bad Gateway                           503 Service Unavailable                   504 Server Timeout                        505 Version not supported                 513 Message Too Large                     600 Busy Everywhere                       603 Decline                               604 Does not exist anywhere               606 Not Acceptable                        1 Unallocated                             2 No route to transit network             3 No Route to destination                 4 Send SIT                                5 Bad trunk prefix                        6 Channel Unacceptable                    17 User Busy                              18 No User Responding                     19 No User resp signalled                 20 Subscriber absent                      21 Rejected                               22 Number Changed                         27 Destination out of order               28 Invalid number format                  29 Facility rejected                      34 No Channel Available                    38 Network OOO                             41 Temporary failure                       42 Congestion                              44 Requested channel not available         47 Resource unavail unspecified            49 QOS fail                                50 Requested facility not subscribed       52 Outgoing barred                         53 Outgoing barred CUG                     57 Capability not authorised               58 Capability not presently available      62 Bad information element                 63 option not available unspecified        65 capability not implemented              66 channel type not implemented            69 facility not implemented                70 limited bearer capability               79 option not implemented                  81 invalid call reference                  82 channel not exist                       87 user not member of CUG                  88 incompatible destination                90 nonexistent CUG                         91 invalid transit network                 95 invalid message                         96 mandatory IE missing                    97, 98, 99, 100, 101 format errors         97, 98, 99, 100, 101 format errors         97, 98, 99, 100, 101 format errors         97, 98, 99, 100, 101 format errors         97, 98, 99, 100, 101 format errors         102 recovery on timer expiry               103, 110, 111 more format errors           103, 110, 111 more format errors           103, 110, 111 more format errors</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute type="xs:short" name="rawcause" use="optional"/>
+                            <xs:attribute type="xs:string" name="file" use="optional"/>
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:float" name="duration"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="translateIsdnCauseToSip">
+          <xs:annotation>
+            <xs:documentation>******************************** ISDN (q931Cause) TO SIP MAPPINGS (sipCause) *******************************************    ISDN Q.931 cause to SIP cause mappings http://www.cisco.com/en/US/docs/ios/12_2t/12_2t11/feature/guide/ftmap.html</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="isdnToSipMappings">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="isdnToSip" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="q931Cause">
+                      <xs:annotation>
+                        <xs:documentation>Q.931 cause code 1  Q.931 cause code 16  Q.931 cause code 17  Q.931 cause code 18  Q.931 cause code 21  Q.931 cause code 22  Q.931 cause code 31  Q.931 cause code 34  Q.931 cause code 38  Q.931 cause code 41  Q.931 cause code 42  Q.931 cause code 44</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:string" name="sipCause"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="outcomeMappings">
+          <xs:annotation>
+            <xs:documentation>******************************** ISDN (q931Cause) TO SOFTDIAL CAUSE (CA) MAPPINGS *******************************************     ISDN Q.931 idle cause type outcome mappings</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="outcome" maxOccurs="unbounded" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation><![CDATA[<outcome>  <usSITAMDRawTone>Announcement</usSITAMDRawTone>  <softdialCA>22</softdialCA>  </outcome>  Call progress tones detection type outcomes]]></xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="q931Cause" minOccurs="0"/>
+                    <xs:element type="xs:string" name="usSITAMDRawTone" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>Fax Machine  Fax Machine No Circuit available, try again later  Intercept - number changed/disconnected  Vacant Code - invalid number?  ReOrder - all kinds of internal network failures, can try again later  Dead Tone, out of service (out of order)  Ring Stopped, usually a machine or carrier announcement  No Ring  VM1  VM2  VM3  Announcement message</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element type="xs:short" name="rawCause" minOccurs="0"/>
+                    <xs:element type="xs:byte" name="softdialCA"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:byte" name="version"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
